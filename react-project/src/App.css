@@ -1,12 +1,15 @@
 @font-face {
-  font-family: 'JalnanGothic';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+  font-family: 'YanoljaYache';
+  src: url('./fonts/YanoljaYache.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+
 .App {
   text-align: center;
+  font-family: 'YanoljaYache', sans-serif;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -31,21 +34,25 @@
 h1 {
   margin: 0;
   font-size: 24px;
-  font-family: 'JalnanGothic', sans-serif;
+  font-family: 'YanoljaYache', sans-serif;
 }
 
 h2 {
   margin: 0;
   font-size: 32px; /* 더 큰 글자 크기 설정 */
-  font-family: 'JalnanGothic', sans-serif;
+  font-family: 'YanoljaYache', sans-serif;
 }
+
 .slider-container {
   margin: 20px;
   padding: 0 10px;
 }
 
 .part {
-  /* .story 클래스를 .part로 변경 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px; /* 요소들 사이의 간격을 넓히기 위해 패딩을 추가 */
 }
 
 .part-circle {
@@ -57,15 +64,17 @@ h2 {
   justify-content: center;
   align-items: center;
   color: white;
-  font-family: 'JalnanGothic', sans-serif;
+  font-family: 'YanoljaYache', sans-serif;
   font-size: 14px;
   cursor: pointer;
-  margin: 0 20px; /* 간격을 넓히기 위해 마진을 조정 */
+  margin: 0 30px; /* 간격을 넓히기 위해 마진을 조정 */
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
 .co-box {
   margin-top: 20px;
   width: 100%;
@@ -82,7 +91,7 @@ h2 {
 }
 
 .co-box h1 {
-  font-family: 'JalnanGothic', sans-serif;
+  font-family: 'YanoljaYache', sans-serif;
   font-size: 24px; /* 글자 크기 키우기 */
   display: flex;
   align-items: center;
@@ -95,25 +104,6 @@ h2 {
   border-radius: 5px;
 }
 
-.past-co-values {
-  margin-top: 40px; /* 현재 CO 값과 과거 CO 값들 사이의 간격 더 넓히기 */
-  display: flex; /* 가로 정렬 */
-  justify-content: space-around; /* 각 요소를 균등하게 배치 */
-  width: 100%; /* 전체 너비 사용 */
-}
-
-.past-co-value {
-  font-family: 'JalnanGothic', sans-serif;
-  font-size: 18px; /* 과거 CO 값의 글자 크기 */
-  display: flex;
-  flex-direction: column; /* 세로 정렬 */
-  align-items: center;
-}
-.description {
-  margin-top: 20px;
-  font-family: 'JalnanGothic', sans-serif;
-  font-size: 18px;
-}
 
 .info-button {
   margin-top: 20px;
@@ -128,6 +118,7 @@ h2 {
 .info-button:hover {
   background-color: #2980b9;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -157,6 +148,7 @@ h2 {
     transform: rotate(360deg);
   }
 }
+
 .modal-overlay {
   position: fixed;
   top: 0;
