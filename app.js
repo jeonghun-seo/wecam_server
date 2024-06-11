@@ -1,9 +1,24 @@
 require("dotenv").config();
-const express = require("express");
+const express =require("express");
+const expressLayouts = require("express-ejs-layouts");
+const connectDb = require("./config/db");
+const Post = require("./models/Post");
+const bodyParser = require('body-parser');
 
 const app = express();
-const port = process.env.PORT || 3000; 
-//env파일에 포트가 지정되어 있다면 그 포트를 사용하고 지정되어있지 않다면 3000번 포트 사용
+const port = process.env.PORT || 3000;
+
+connectDb();
+
+app.use(expressLayouts);
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use(express.static("public"));
+
+//미들웨어 설정
+app.use(bodyParser.json());
+
 
 app.use("/", require("./routes/main"));
 

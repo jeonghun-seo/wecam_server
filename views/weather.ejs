@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Widget</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .weather_icon {
+            height: 150px;
+            width: 150px;
+        }
+        .weather_description {
+            font-size: 20pt;
+        }
+        .current_temp {
+            font-size: 50pt;
+        }
+        .city {
+            font-size: 13pt;
+        }
+        .temp_min, .temp_max, .humidity, .wind, .cloud {
+            font-size: 11pt;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: rgb(101, 178, 255); padding: 40px; color: #fff; height: 220px">
+        <div style="float: left;">
+            <div class="weather_icon"></div>
+        </div>
+        <div style="float: right; margin: -5px 0px 0px 60px; font-size: 11pt">
+            <div class="temp_min"></div>
+            <div class="temp_max"></div>
+            <div class="humidity"></div>
+            <div class="wind"></div>
+            <div class="cloud"></div>
+        </div>
+        <div style="float: right; margin-top: -45px;">
+            <div class="current_temp"></div>
+            <div class="weather_description"></div>
+            <div class="city"></div>
+        </div>
+    </div>
+
+    <script>
+        // 날씨 api - fontawesome 아이콘
+        var weatherIcon = {
+            '01': 'fas fa-sun',
+            '02': 'fas fa-cloud-sun',
+            '03': 'fas fa-cloud',
+            '04': 'fas fa-cloud-meatball',
+            '09': 'fas fa-cloud-sun-rain',
+            '10': 'fas fa-cloud-showers-heavy',
+            '11': 'fas fa-poo-storm',
+            '13': 'far fa-snowflake',
+            '50': 'fas fa-smog'
+        };
+
+        // 날씨 api - 서울
+        var apiURI = "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=63240f81d3eb4231aeb78db0a195814e"; // 여기에 자신의 API 키를 넣으세요
+        $.ajax({
+            url: apiURI,
+            dataType: "json",
+            type: "GET",
+            async: false,
+            success: function(resp) {
+                var $Icon = (resp.weather[0].icon).substr(0, 2);
+                var $weather_description = resp.weather[0].main;
+                var $Temp = Math.floor(resp.main.temp - 273.15) + 'º';
+                var $humidity = '습도 ' + resp.main.humidity + ' %';
+                var $wind = '바람 ' + resp.wind.speed + ' m/s';
+                var $city = '서울';
+                var $cloud = '구름 ' + resp.clouds.all + "%";
+                var $temp_min = '최저 온도 ' + Math.floor(resp.main.temp_min - 273.15) + 'º';
+                var $temp_max = '최고 온도 ' + Math.floor(resp.main.temp_max - 273.15) + 'º';
+
+                $('.weather_icon').append('<i class="' + weatherIcon[$Icon] + ' fa-5x"></i>');
+                $('.weather_description').prepend($weather_description);
+                $('.current_temp').prepend($Temp);
+                $('.humidity').prepend($humidity);
+                $('.wind').prepend($wind);
+                $('.city').append($city);
+                $('.cloud').append($cloud);
+                $('.temp_min').append($temp_min);
+                $('.temp_max').append($temp_max);
+            }
+        });
+    </script>
+</body>
+</html>
