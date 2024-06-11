@@ -53,7 +53,17 @@ router.post('/data', async(req, res) => {
     }
 });
 
-
+//GET 요청 처리
+router.get('/getData', async (req, res) => {
+    try {
+        const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1000); // 현재 시간에서 6시간 전 시간 계산
+        const data = await Post.find({ timestamp: { $gte: sixHoursAgo } });
+        res.json(data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred while fetching data' });
+    }
+});
 
 
 
