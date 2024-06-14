@@ -13,25 +13,25 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios.get('http://RainB6735.iptime.org:3000/getData')
-      .then(response => {
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://RainB6735.iptime.org:3000/getData')
+  //     .then(response => {
+  //       setData(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       setError(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+  // if (error) {
+  //   return <p>Error: {error.message}</p>;
+  // }
 
   const settings = {
     dots: false,
@@ -79,7 +79,7 @@ function App() {
             <h3>{modalTitle}</h3>
             <p>이곳에 {modalTitle}의 모달 내용을 추가하세요.</p>
             <h1>Fetched Data</h1>
-            <ul>
+            {/* <ul>
               {data.map(item => (
                 <li key={item.sensor_id}>
                   <p>Sensor ID: {item.sensor_id}</p>
@@ -87,7 +87,7 @@ function App() {
                   <p>Timestamp: {new Date(item.timestamp).toLocaleString()}</p>
                 </li>
               ))}
-            </ul>
+            </ul> */}
             <button onClick={handleCloseModal}>닫기</button>
           </div>
         </div>
