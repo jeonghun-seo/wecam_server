@@ -1,30 +1,29 @@
 require("dotenv").config();
 const express =require("express");
-const expressLayouts = require("express-ejs-layouts");
 const connectDb = require("./config/db");
 const Post = require("./models/Post");
-const bodyParser = require('body-parser');
-
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
 connectDb();
 
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
+
 app.use(express.json());
 var cors = require('cors');
 app.use(cors());
 
-app.use(expressLayouts);
-app.set("view engine", "ejs");
-app.set("views", "./views");
-
-app.use(express.static("public"));
-
-//미들웨어 설정
-app.use(bodyParser.json());
-
 app.use("/", require("./routes/main"));
 
-app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+app.use(express.static(path.join(__dirname, 'react-project/build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/react-project/build/index.html'));
+});
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '/react-project/build/index.html'));
 });

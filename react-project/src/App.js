@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import parts from './data/parts';
 import coData from './data/co';
+import axios from 'axios';
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
