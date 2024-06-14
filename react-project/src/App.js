@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import './App.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import parts from './data/parts';
+import parts from './data/parts'; // parts 데이터를 사용하는 경우
 import axios from 'axios';
+
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -22,7 +23,7 @@ function App() {
         setError(error);
         setLoading(false);
       });
-  }, []); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 합니다.
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -31,7 +32,6 @@ function App() {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-
 
   const settings = {
     dots: false,
@@ -51,8 +51,6 @@ function App() {
     setModalVisible(false);
   };
 
-
-
   return (
     <div className="App">
       <nav className="navbar">
@@ -67,7 +65,10 @@ function App() {
         <Slider {...settings}>
           {parts.map((part, index) => (
             <div className="part" key={index}>
-              <div className="part-circle" onClick={() => handleCircleClick(part)}>{part}</div>
+              <div className="part-circle" onClick={() => handleCircleClick(`Part ${index + 1}`)}>
+                <img src={`${process.env.PUBLIC_URL}/tent/tent${index + 1}.jpg`} alt={`Tent ${index + 1}`} />
+              </div>
+              <div className="part-label">Part {index + 1}</div>
             </div>
           ))}
         </Slider>
@@ -76,18 +77,17 @@ function App() {
         <div className="modal-overlay" onClick={handleCloseModal}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <h3>{modalTitle}</h3>
-            <p>이곳에 {modalTitle}의 모달 내용을 추가하세요.
+            <p>이곳에 {modalTitle}의 모달 내용을 추가하세요.</p>
             <h1>Fetched Data</h1>
-      <ul>
-        {data.map(item => (
-          <li key={item.sensor_id}>
-            <p>Sensor ID: {item.sensor_id}</p>
-            <p>Average PPM: {item.avg_ppm}</p>
-            <p>Timestamp: {new Date(item.timestamp).toLocaleString()}</p>
-          </li>
-        ))}
-      </ul>
-            </p>
+            <ul>
+              {data.map(item => (
+                <li key={item.sensor_id}>
+                  <p>Sensor ID: {item.sensor_id}</p>
+                  <p>Average PPM: {item.avg_ppm}</p>
+                  <p>Timestamp: {new Date(item.timestamp).toLocaleString()}</p>
+                </li>
+              ))}
+            </ul>
             <button onClick={handleCloseModal}>닫기</button>
           </div>
         </div>
