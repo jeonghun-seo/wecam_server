@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    flex-direction: column;
+  }
+  
+  .navbar-left {
+    flex: 1;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .navbar-center {
+    flex: 1;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'YanoljaYache', sans-serif;
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 32px;
+    font-family: 'YanoljaYache', sans-serif;
+  }
+  
