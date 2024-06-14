@@ -1,36 +1,8 @@
+// main.js
 const express = require("express");
 const router = express.Router();
-const mainLayout = "../views/layouts/main.ejs";
 const Post = require("../models/Post");
 const asyncHandler = require("express-async-handler");
-//const cron = require('node-cron');
-
-// router.get(["/", "/home"], asyncHandler(async(req, res) => {
-//     const locals = {
-//         title: "Home",
-//     };
-//     const data = await Post.find(); //데이터베이스에서 가져오기 부분!!!!
-//     res.render("index", {locals, data, layout: mainLayout});
-// }));
-
-// router.get("/weather", (req, res) => {
-//     const locals = {
-//         title: "weather",
-//     };
-//     res.render("weather", {locals, layout: mainLayout});
-// });
-
-/**
- * 게시물 상세 보기
- * GET /post/:id
- */
-// router.get( 
-//     "/post/:id",
-//     asyncHandler(async (req, res) => {
-//         const data = await Post.findOne({ _id: req.params.id });
-//         res.render("post", { data, layout: mainLayout});
-//     })
-// );
 
 // 인증 토큰 검증 함수 (수정)
 function verifyToken(token) {
