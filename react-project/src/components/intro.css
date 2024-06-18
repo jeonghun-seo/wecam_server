@@ -1,0 +1,70 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white; /* 양옆 흰색 */
+}
+
+.intro-box {
+  width: 100%;
+  max-width: 400px; /* 모바일에 맞춘 최대 너비 */
+  height: 100%; /* 높이 100%로 설정하여 화면 상하 꽉 채우기 */
+  padding: 20px;
+  background-color: #6B8E23; /* 자연 느낌이 나는 초록색 배경 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 중앙 정렬 추가 */
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 20px 0;
+}
+
+h1 {
+  color: white;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+p {
+  color: white;
+  margin-bottom: 40px;
+}
+
+button {
+  width: 80%;
+  height: 50px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.sign-up {
+  background-color: #FF5A5F; /* Sign Up 버튼 색상 */
+  color: white;
+}
+
+.login {
+  background-color: white; /* Login 버튼 색상 */
+  color: #4A90E2;
+}
+
+button:hover {
+  opacity: 0.8;
+}
